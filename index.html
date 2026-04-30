@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>VeriVoto</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        text-align: center;
+        padding: 20px;
+    }
+    h1 {
+        color: #2c3e50;
+    }
+    textarea {
+        width: 80%;
+        height: 120px;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    button {
+        padding: 10px 20px;
+        background: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .resultado {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .explicacion {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    .madre {
+        margin-top: 40px;
+        padding: 15px;
+        background: #ffe6ea;
+        border-radius: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🗳️ VeriVoto</h1>
+<p>Verifica información política fácilmente</p>
+
+<textarea id="texto" placeholder="Pega aquí la noticia o información..."></textarea><br>
+<button onclick="verificar()">Verificar</button>
+
+<div class="resultado" id="resultado"></div>
+<div class="explicacion" id="explicacion"></div>
+
+<div class="madre">
+    <h2>💐 Especial Día de la Madre</h2>
+    <p>Comparte información verificada con responsabilidad. Una sociedad informada es el mejor regalo para nuestras madres 💖</p>
+</div>
+
+<script>
+function verificar() {
+    let texto = document.getElementById("texto").value.toLowerCase();
+    let resultado = document.getElementById("resultado");
+    let explicacion = document.getElementById("explicacion");
+
+    if (texto.includes("urgente") || texto.includes("compártelo ya")) {
+        resultado.innerHTML = "🔴 FALSO";
+        resultado.style.color = "red";
+        explicacion.innerHTML = "Este tipo de mensajes suelen ser alarmistas y no verificables.";
+    } 
+    else if (texto.includes("dicen que") || texto.includes("no confirmado")) {
+        resultado.innerHTML = "🟡 DUDOSO";
+        resultado.style.color = "orange";
+        explicacion.innerHTML = "La información no tiene fuentes claras. Verifica antes de compartir.";
+    } 
+    else {
+        resultado.innerHTML = "🟢 VERDADERO";
+        resultado.style.color = "green";
+        explicacion.innerHTML = "La información parece confiable, pero siempre revisa fuentes oficiales.";
+    }
+}
+</script>
+
+</body>
+                </html>
